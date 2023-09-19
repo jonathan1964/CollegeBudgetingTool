@@ -10,7 +10,7 @@ import platform
 try:
     import customtkinter
 except ImportError as install:
-    if platform.system == "Windows":
+    if platform.system() == "Windows":
         os.system("pip install customtkinter")
         os.system("CollegeLoanTool.py")
         exit()
