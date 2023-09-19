@@ -14,7 +14,7 @@ except ImportError as install:
         os.system("pip install customtkinter")
         os.system("CollegeLoanTool.py")
         exit()
-    else
+    else:
         os.system("pip install customtkinter --break-system-packages")
         os.system("python3 CollegeLoanTool.py")
         exit()
