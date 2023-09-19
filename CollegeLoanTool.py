@@ -6,12 +6,18 @@ import os
 import tkinter
 import tkinter.messagebox
 import time
+import platform
 try:
     import customtkinter
 except ImportError as install:
-    os.system("pip install customtkinter --break-system-packages")
-    os.system("python3 CollegeLoanTool.py")
-    exit()
+    if platform.system == "Windows":
+        os.system("pip install customtkinter")
+        os.system("CollegeLoanTool.py")
+        exit()
+    else
+        os.system("pip install customtkinter --break-system-packages")
+        os.system("python3 CollegeLoanTool.py")
+        exit()
 
 window = customtkinter.CTk()
 window.geometry("1100x580")
@@ -63,20 +69,26 @@ window.hours_label.grid(row=3, column=0, padx=(20,10), pady=(20,10), stick="s")
 window.spending_label = customtkinter.CTkLabel(window.sidebar_frame, text="spending", font=customtkinter.CTkFont(size=20, weight="bold"))
 window.spending_label.grid(row=5, column=0, padx=(20,10), pady=(20,10), stick="s")
 
+window.spacer_1 = customtkinter.CTkLabel(window.sidebar_frame, text="-", font=customtkinter.CTkFont(size=20, weight="bold"))
+window.spacer_1.grid(row=7, column=0, padx=(20,10), pady=(20,10), stick="s")
+
+window.spacer_2 = customtkinter.CTkLabel(window.sidebar_frame, text="-", font=customtkinter.CTkFont(size=20, weight="bold"))
+window.spacer_2.grid(row=9, column=0, padx=(20,10), pady=(20,10), stick="s")
+
 Loan = window.slider_loan.get()
 
 window.loan_label = customtkinter.CTkLabel(window.sidebar_frame, text=("$", Loan), font=customtkinter.CTkFont(size=20, weight="bold"))
-window.loan_label.grid(row=7, column=0, padx=(20,10), pady=(20,10), sticky="s")
+window.loan_label.grid(row=11, column=0, padx=(20,10), pady=(50,10), sticky="s")
 
 APR = window.slider_apr.get()
 
 window.apr_label = customtkinter.CTkLabel(window.sidebar_frame, text=APR, font=customtkinter.CTkFont(size=20, weight="bold"))
-window.apr_label.grid(row=9, column=0, padx=(20,10), pady=(20,10), sticky="s")
+window.apr_label.grid(row=13, column=0, padx=(20,10), pady=(20,10), sticky="s")
 
 Years = window.slider_years.get()
 
 window.year_label = customtkinter.CTkLabel(window.sidebar_frame, text=Years, font=customtkinter.CTkFont(size=20, weight="bold"))
-window.year_label.grid(row=11, column=0, padx=(20,10), pady=(20,10), sticky="s")
+window.year_label.grid(row=15, column=0, padx=(20,10), pady=(20,10), sticky="s")
 
 def update_loan():
     Loan = window.slider_loan.get()
@@ -92,6 +104,7 @@ def update_years():
     Years = window.slider_years.get()
     window.year_label.configure(text=Years)
     window.year_label.after(100, update_years)
+
 update_loan()
 update_apr()
 update_years()
