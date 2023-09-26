@@ -121,7 +121,7 @@ window.slider_years.grid(row=2, column=0, padx=10, pady=(20,20), stick="w")
 def update_pay():
     Pay = window.pay_entry.get()
     
-    if len(Pay) > 0 and len(Pay) < 10 and Pay.isalpha() == False:
+    if len(Pay) > 0 and len(Pay) < 10 and int(Pay) > 0 and Pay.isalpha() == False:
         window.pay_label.configure(text=Pay)
         window.pay_label.after(25, update_pay)
     else:
@@ -131,7 +131,7 @@ def update_pay():
 def update_hours():
     Hours = window.hours_entry.get()
     
-    if len(Hours) > 0 and len(Hours) < 10 and Hours.isalpha() == False:
+    if len(Hours) > 0 and len(Hours) < 10 and int(Hours) <= 168 and int(Hours) >= 0 and Hours.isalpha() == False:
         window.hours_label.configure(text=Hours)
         window.hours_label.after(25, update_hours)
     else:
@@ -141,7 +141,7 @@ def update_hours():
 def update_spending():
     Spending = window.spending_entry.get()
 
-    if len(Spending) > 0 and len(Spending) < 10 and Spending.isalpha() == False:
+    if len(Spending) > 0 and len(Spending) < 10 and int(Spending) >= 0 and Spending.isalpha() == False:
         window.spending_label.configure(text=Spending)
         window.spending_label.after(25, update_spending)
     else:
