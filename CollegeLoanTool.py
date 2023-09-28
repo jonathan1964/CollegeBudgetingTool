@@ -120,31 +120,40 @@ window.slider_years.grid(row=2, column=0, padx=10, pady=(20,20), stick="w")
 #Defines Functions Related To Each Value Input, and Update the Left View Stats
 def update_pay():
     Pay = window.pay_entry.get()
-    
-    if len(Pay) > 0 and len(Pay) < 10 and float(Pay) >= 0 and Pay.isalpha() == False:
-        window.pay_label.configure(text=Pay)
-        window.pay_label.after(25, update_pay)
-    else:
+    try: 
+        if len(Pay) > 0 and len(Pay) < 10 and float(Pay) >= 0 and Pay.isalpha() == False:
+            window.pay_label.configure(text=("$", Pay, "/ Hour"))
+            window.pay_label.after(25, update_pay)
+        else:
+            window.pay_label.configure(text="Invalid")
+            window.pay_label.after(25, update_pay)
+    except ValueError:
         window.pay_label.configure(text="Invalid")
         window.pay_label.after(25, update_pay)
-    
+
 def update_hours():
     Hours = window.hours_entry.get()
-    
-    if len(Hours) > 0 and len(Hours) < 10 and float(Hours) <= 168 and float(Hours) >= 0 and Hours.isalpha() == False:
-        window.hours_label.configure(text=Hours)
-        window.hours_label.after(25, update_hours)
-    else:
+    try: 
+        if len(Hours) > 0 and len(Hours) < 10 and float(Hours) <= 168 and float(Hours) >= 0 and Hours.isalpha() == False:
+            window.hours_label.configure(text=(Hours, "Hours"))
+            window.hours_label.after(25, update_hours)
+        else:
+            window.hours_label.configure(text="Invalid")
+            window.hours_label.after(25, update_hours)
+    except ValueError:
         window.hours_label.configure(text="Invalid")
         window.hours_label.after(25, update_hours)
 
 def update_spending():
     Spending = window.spending_entry.get()
-
-    if len(Spending) > 0 and len(Spending) < 10 and float(Spending) >= 0 and Spending.isalpha() == False:
-        window.spending_label.configure(text=Spending)
-        window.spending_label.after(25, update_spending)
-    else:
+    try:
+        if len(Spending) > 0 and len(Spending) < 10 and float(Spending) >= 0 and Spending.isalpha() == False:
+            window.spending_label.configure(text=("$", Spending))
+            window.spending_label.after(25, update_spending)
+        else:
+            window.spending_label.configure(text="Invalid")
+            window.spending_label.after(25, update_spending)
+    except ValueError:
         window.spending_label.configure(text="Invalid")
         window.spending_label.after(25, update_spending)
 
