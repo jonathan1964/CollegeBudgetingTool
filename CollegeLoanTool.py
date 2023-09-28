@@ -150,17 +150,17 @@ def update_spending():
 
 def update_loan():
     Loan = window.slider_loan.get()
-    window.loan_label.configure(text=Loan)
+    window.loan_label.configure(text=("$", Loan))
     window.loan_label.after(25, update_loan)
 
 def update_apr():
     APR = window.slider_apr.get()
-    window.apr_label.configure(text=APR)
+    window.apr_label.configure(text=(APR, "% APR"))
     window.apr_label.after(25, update_apr)
 
 def update_years():
     Years = window.slider_years.get()
-    window.year_label.configure(text=Years)
+    window.year_label.configure(text=(Years, "Years"))
     window.year_label.after(25, update_years)
 
 def update_loan_final():
