@@ -121,7 +121,7 @@ window.slider_years.grid(row=2, column=0, padx=10, pady=(20,20), stick="w")
 def update_pay():
     Pay = window.pay_entry.get()
     
-    if len(Pay) > 0 and len(Pay) < 10 and float(Pay) > 0 and Pay.isalpha() == False:
+    if len(Pay) > 0 and len(Pay) < 10 and float(Pay) >= 0 and Pay.isalpha() == False:
         window.pay_label.configure(text=Pay)
         window.pay_label.after(25, update_pay)
     else:
